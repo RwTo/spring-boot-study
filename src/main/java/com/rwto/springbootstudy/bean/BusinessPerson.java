@@ -5,7 +5,9 @@ import org.springframework.beans.factory.*;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Scope;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -28,7 +30,7 @@ import javax.annotation.PreDestroy;
  */
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 @Component
-public class BusinessPerson implements BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean {
+public class BusinessPerson implements BeanNameAware, BeanFactoryAware, EnvironmentAware,ApplicationContextAware, InitializingBean, DisposableBean {
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
         System.out.println("【"+this.getClass().getSimpleName()+"】setBeanFactory");
@@ -62,5 +64,10 @@ public class BusinessPerson implements BeanNameAware, BeanFactoryAware, Applicat
     @Override
     public void setBeanName(String s) {
         System.out.println("【"+this.getClass().getSimpleName()+"】setBeanName");
+    }
+
+    @Override
+    public void setEnvironment(Environment environment) {
+        System.out.println("【"+this.getClass().getSimpleName()+"】setEnvironment");
     }
 }
