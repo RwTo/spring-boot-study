@@ -57,6 +57,13 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+        <!--自定义starter-->
+        <dependency>
+            <groupId>com.rw</groupId>
+            <artifactId>study-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <!--引入插件-->
@@ -67,6 +74,18 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>application.properties</exclude>
+                    <exclude>bootstrap.properties</exclude>
+                    <exclude>error_info.xml</exclude>
+                    <exclude>log4j2.xml</exclude>
+                </excludes>
+            </resource>
+        </resources>
     </build>
 
 </project>

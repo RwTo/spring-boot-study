@@ -1,21 +1,19 @@
-package com.rwto.springbootstudy;
+package com.rwto.springbootstudy.application;
 
 import com.rwto.springbootstudy.processor.BeanPostProcessorTest;
-import com.rwto.springbootstudy.service.UserService;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 
-
-/**SpringBoot 约定优于配置*/
-/*符合注解*/
+/**
+ * @author renmw
+ * @create 2023/12/29 17:10
+ **/
 @SpringBootApplication
-public class SpringBootStudyApplication {
-
+@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,classes = BeanPostProcessorTest.class))
+public class MvcApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootStudyApplication.class, args);
+        SpringApplication.run(MvcApplication.class,args);
     }
-
 }
