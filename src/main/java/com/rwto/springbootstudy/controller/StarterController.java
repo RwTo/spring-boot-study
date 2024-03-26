@@ -24,8 +24,4 @@ public class StarterController {
     public String hello(String name){
         return starterService.sayHello(name);
     }
-
-    public static void main(String[] args) {
-
-    }
 }

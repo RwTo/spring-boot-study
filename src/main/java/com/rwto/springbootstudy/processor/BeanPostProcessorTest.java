@@ -13,14 +13,19 @@ public class BeanPostProcessorTest implements BeanPostProcessor {
     /**初始化之前执行*/
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("postProcessBeforeInitialization:【"+bean.getClass().getSimpleName()+"】【"+beanName+"】");
+
+        if(null != bean.getClass().getPackage() && bean.getClass().getPackage().getName().contains("com.rwto.springbootstudy")){
+            System.out.println("postProcessBeforeInitialization:【"+bean.getClass().getSimpleName()+"】【"+beanName+"】");
+        }
         return bean;
     }
 
     /**初始化之后执行*/
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("postProcessAfterInitialization:【"+bean.getClass().getSimpleName()+"】【"+beanName+"】");
+        if(null != bean.getClass().getPackage() && bean.getClass().getPackage().getName().contains("com.rwto.springbootstudy")){
+            System.out.println("postProcessAfterInitialization:【"+bean.getClass().getSimpleName()+"】【"+beanName+"】");
+        }
         return bean;
     }
 }
