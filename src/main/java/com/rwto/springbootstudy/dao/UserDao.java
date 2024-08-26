@@ -2,7 +2,11 @@ package com.rwto.springbootstudy.dao;
 
 import com.rwto.springbootstudy.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author renmw
@@ -20,4 +24,8 @@ public interface UserDao {
     Integer insertUser(User user);
 
     User getUser(Long id);
+
+    List<Map<String, String>> selectSql(@Param("sql") String sql, @Param("params") Map<String, Object> params);
+
+    Object dynamicSelect(Long id);
 }

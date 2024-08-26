@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @author renmw
  * @create 2024/1/3 15:27
  **/
-@Controller
+//@Controller
 public class StarterController {
 
 

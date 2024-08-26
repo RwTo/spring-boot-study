@@ -27,14 +27,22 @@ public class RedissonDelayQueueService {
     @PostConstruct
     public void init(){
         new Thread(()->{
-            while (true){
-                try {
-                    String str = rBlockingDeque.take();
-                    log.info("str="+str);
-                } catch (Exception e) {
-                    log.error("error",e);
+            new Thread(()->{
+                int count = 0;
+                int sum = 0;
+                while (true){
+                    try {
+                        String str = rBlockingDeque.take();
+                        log.info("str="+str);
+                        sum+=Integer.parseInt(str);
+                        count++;
+                        log.info("count="+count);
+                        log.info("sum="+sum);
+                    } catch (Exception e) {
+                        log.error("error",e);
+                    }
                 }
-            }
+            }).start();
         }).start();
     }
 
